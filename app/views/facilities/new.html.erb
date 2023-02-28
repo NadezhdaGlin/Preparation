@@ -1,0 +1,32 @@
+<h1>New Facility</h1>
+
+<%= form_with model: @facility do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :membercost %><br>
+    <%= form.text_area :membercost %>
+  </div>
+
+  <div>
+    <%= form.label :guestcost %><br>
+    <%= form.text_area :guestcost %>
+  </div>
+
+  <div>
+    <%= form.label :initialoutlay %><br>
+    <%= form.text_area :initialoutlay %>
+  </div>
+
+  <div>
+    <%= form.label :monthlymaintenance %><br>
+    <%= form.text_area :monthlymaintenance %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

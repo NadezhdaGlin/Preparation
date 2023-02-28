@@ -1,0 +1,9 @@
+<h1>Facilities</h1>
+
+<ul>
+  <% @facilities.each do |facility| %>
+    <li>
+      <%= link_to facility.name, facility %>
+    </li>
+  <% end %>
+</ul>
