@@ -39,4 +39,24 @@ RSpec.describe Facility, type: :model do
       expect(monthlymaintenance).to contain_exactly([facility1.name, facility1.membercost, facility1.monthlymaintenance],[facility3.name, facility3.membercost, facility3.monthlymaintenance])
     end
   end
+
+  context '5-6 task' do
+    let!(:facility1) { create :facility, name: "Tennis Court 1", membercost: 5, guestcost: 25, initialoutlay: 10000, monthlymaintenance: 200}
+    let!(:facility2) { create :facility }
+    let!(:facility3) { create :facility, name: 'Table Tennis', membercost: 0, guestcost: 5, initialoutlay: 302, monthlymaintenance: 10}
+    let!(:facility4) { create :facility, name: 'Snooker Table', membercost: 0, guestcost: 5, initialoutlay: 450, monthlymaintenance: 15}
+    
+    it 'return all facilities with the word Tennis in name' do
+      name = Facility.tennis
+      expect(name).to contain_exactly(facility1, facility3)
+    end
+
+    let(:params) {[facility1.id, facility2.id]}
+    subject(:specific_ids) {described_class.specific_ids(params)}
+
+    it 'return specific ids' do
+      expect(specific_ids).to contain_exactly(facility1, facility2)
+    end
+  end
+
 end
